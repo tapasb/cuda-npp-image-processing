@@ -60,7 +60,7 @@ void applyGaussianBlur(const Npp8u* inputImage, Npp8u* outputImage, int width, i
     cudaMemcpy(d_src, inputImage, width * height * sizeof(Npp8u), cudaMemcpyHostToDevice);
 
     // Define Gaussian kernel
-    Npp32f kernel[5 * 5] = {
+    const Npp32s kernel[5 * 5] = {
         1,  4,  7,  4, 1,
         4, 16, 26, 16, 4,
         7, 26, 41, 26, 7,
@@ -69,9 +69,10 @@ void applyGaussianBlur(const Npp8u* inputImage, Npp8u* outputImage, int width, i
     };
     NppiSize kernelSize = {5, 5};
     NppiPoint anchor = {2, 2};
+    Npp32s divisor = 273; // Sum of all kernel elements
 
     // Apply Gaussian blur
-    nppiFilter_8u_C1R(d_src, srcStep, d_dst, dstStep, roiSize, kernel, kernelSize, anchor);
+    nppiFilter_8u_C1R(d_src, srcStep, d_dst, dstStep, roiSize, kernel, kernelSize, anchor, divisor);
 
     // Copy result back to host
     cudaMemcpy(outputImage, d_dst, width * height * sizeof(Npp8u), cudaMemcpyDeviceToHost);

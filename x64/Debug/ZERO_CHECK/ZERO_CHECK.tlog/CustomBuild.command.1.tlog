@@ -1,0 +1,10 @@
+^C:\USERS\TAPAS\ONEDRIVE\DESKTOP\CUDA\CUDA-NPP-IMAGE-PROCESSING\CMAKEFILES\BD3817DEEF56488847276060C928BFE5\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/tapas/OneDrive/Desktop/cuda/cuda-npp-image-processing -BC:/Users/tapas/OneDrive/Desktop/cuda/cuda-npp-image-processing --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/tapas/OneDrive/Desktop/cuda/cuda-npp-image-processing/CUDA_NPP_Image_Processing.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

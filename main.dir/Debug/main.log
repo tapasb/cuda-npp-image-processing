@@ -1,0 +1,5 @@
+﻿  Building Custom Rule C:/Users/tapas/OneDrive/Desktop/cuda/cuda-npp-image-processing/CMakeLists.txt
+  main.cpp
+  image_processing.cpp
+  Generating Code...
+LINK : fatal error LNK1104: cannot open file 'nppc.lib'
